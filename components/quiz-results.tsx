@@ -1,9 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
-import { CheckCircle2, XCircle, Home, RotateCcw, ChevronDown, ChevronUp, Clock, Target, TrendingUp } from "lucide-react"
+import { CheckCircle2, XCircle, Home, RotateCcw, ChevronDown, ChevronUp, Clock, Target, TrendingUp, Filter } from "lucide-react"
 import type { Question } from "@/lib/types"
+
+type ReviewFilter = "all" | "wrong" | "correct"
 
 interface QuizResultsProps {
   questions: Question[]
@@ -15,7 +17,20 @@ interface QuizResultsProps {
 
 export function QuizResults({ questions, answers, startTime, endTime, mode }: QuizResultsProps) {
   const router = useRouter()
-  const [expandedQuestion, setExpandedQuestion] = useState<number | null>(null)
+
+  // Auto-expand all wrong answers on mount
+  const wrongIndices = useMemo(() => {
+    const indices = new Set<number>()
+    questions.forEach((q, i) => {
+      if (answers[i] !== q.correctIndex) {
+        indices.add(i)
+      }
+    })
+    return indices
+  }, [questions, answers])
+
+  const [expandedQuestions, setExpandedQuestions] = useState<Set<number>>(wrongIndices)
+  const [reviewFilter, setReviewFilter] = useState<ReviewFilter>("wrong")
 
   const totalQuestions = questions.length
   const correctCount = questions.reduce((acc, q, i) => {
@@ -156,11 +171,53 @@ export function QuizResults({ questions, answers, startTime, endTime, mode }: Qu
 
         {/* Question Review */}
         <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold text-foreground">Gabarito Comentado</h3>
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h3 className="text-lg font-semibold text-foreground">Gabarito Comentado</h3>
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4 text-muted-foreground" />
+              <div className="inline-flex rounded-lg border border-border bg-secondary/50 p-0.5">
+                <button
+                  onClick={() => setReviewFilter("wrong")}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                    reviewFilter === "wrong"
+                      ? "bg-red-100 text-red-700 shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Erradas ({wrongCount})
+                </button>
+                <button
+                  onClick={() => setReviewFilter("correct")}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                    reviewFilter === "correct"
+                      ? "bg-emerald-100 text-emerald-700 shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Corretas ({correctCount})
+                </button>
+                <button
+                  onClick={() => setReviewFilter("all")}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                    reviewFilter === "all"
+                      ? "bg-card text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Todas ({totalQuestions})
+                </button>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col gap-3">
             {questions.map((q, i) => {
               const isCorrect = answers[i] === q.correctIndex
-              const isExpanded = expandedQuestion === i
+
+              // Apply filter
+              if (reviewFilter === "wrong" && isCorrect) return null
+              if (reviewFilter === "correct" && !isCorrect) return null
+
+              const isExpanded = expandedQuestions.has(i)
 
               return (
                 <div
@@ -168,7 +225,17 @@ export function QuizResults({ questions, answers, startTime, endTime, mode }: Qu
                   className="overflow-hidden rounded-lg border border-border bg-card"
                 >
                   <button
-                    onClick={() => setExpandedQuestion(isExpanded ? null : i)}
+                    onClick={() => {
+                      setExpandedQuestions((prev) => {
+                        const next = new Set(prev)
+                        if (next.has(i)) {
+                          next.delete(i)
+                        } else {
+                          next.add(i)
+                        }
+                        return next
+                      })
+                    }}
                     className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-secondary/50"
                   >
                     {isCorrect ? (
@@ -191,6 +258,26 @@ export function QuizResults({ questions, answers, startTime, endTime, mode }: Qu
                     <div className="border-t border-border px-4 py-4">
                       <p className="mb-4 whitespace-pre-line text-sm text-card-foreground">{q.text}</p>
 
+                      {/* Labels for wrong/unanswered questions */}
+                      {!isCorrect && (
+                        <div className="mb-3 flex flex-wrap gap-2 text-xs">
+                          {answers[i] !== null ? (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-red-100 px-2.5 py-1 font-medium text-red-700">
+                              <XCircle className="h-3 w-3" />
+                              Sua resposta: {String.fromCharCode(65 + (answers[i] as number))}
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 font-medium text-amber-700">
+                              Nao respondida
+                            </span>
+                          )}
+                          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 font-medium text-emerald-700">
+                            <CheckCircle2 className="h-3 w-3" />
+                            Correta: {String.fromCharCode(65 + q.correctIndex)}
+                          </span>
+                        </div>
+                      )}
+
                       <div className="mb-4 flex flex-col gap-2">
                         {q.options.map((opt, optIndex) => {
                           const letter = String.fromCharCode(65 + optIndex)
@@ -209,9 +296,19 @@ export function QuizResults({ questions, answers, startTime, endTime, mode }: Qu
                           return (
                             <div key={optIndex} className={cls}>
                               <span className="font-bold">{letter})</span>
-                              <span>{opt}</span>
-                              {isCorrectOpt && <CheckCircle2 className="ml-auto h-4 w-4 shrink-0 text-emerald-600" />}
-                              {isUserAnswer && !isCorrectOpt && <XCircle className="ml-auto h-4 w-4 shrink-0 text-red-600" />}
+                              <span className="flex-1">{opt}</span>
+                              {isCorrectOpt && (
+                                <span className="ml-auto flex shrink-0 items-center gap-1">
+                                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                                  <span className="text-xs font-medium text-emerald-600">Correta</span>
+                                </span>
+                              )}
+                              {isUserAnswer && !isCorrectOpt && (
+                                <span className="ml-auto flex shrink-0 items-center gap-1">
+                                  <XCircle className="h-4 w-4 text-red-600" />
+                                  <span className="text-xs font-medium text-red-600">Sua resposta</span>
+                                </span>
+                              )}
                             </div>
                           )
                         })}
