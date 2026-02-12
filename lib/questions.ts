@@ -2223,6 +2223,29 @@ export function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
+/**
+ * Shuffles the options of a question and updates the correctIndex accordingly.
+ * This ensures the correct answer position is randomized across A-E.
+ */
+export function shuffleQuestionOptions(question: Question): Question {
+  const indices = question.options.map((_, i) => i)
+  const shuffledIndices = shuffleArray(indices)
+  const newOptions = shuffledIndices.map(i => question.options[i])
+  const newCorrectIndex = shuffledIndices.indexOf(question.correctIndex)
+  return {
+    ...question,
+    options: newOptions,
+    correctIndex: newCorrectIndex,
+  }
+}
+
+/**
+ * Shuffles the options of all questions in the array.
+ */
+export function shuffleAllOptions(questions: Question[]): Question[] {
+  return questions.map(shuffleQuestionOptions)
+}
+
 export function getSimuladoQuestions(area: "informatica" | "educacionais"): Question[] {
   const allPortugues = questions.filter(q => q.category === "portugues")
   const allLegislacao = questions.filter(q => q.category === "legislacao")
@@ -2234,7 +2257,7 @@ export function getSimuladoQuestions(area: "informatica" | "educacionais"): Ques
   const legislacao = getExactQuestions(allLegislacao, 10)
   const especificas = getExactQuestions(allEspecificas, 40)
 
-  return [...portugues, ...legislacao, ...especificas]
+  return shuffleAllOptions([...portugues, ...legislacao, ...especificas])
 }
 
 function getExactQuestions(pool: Question[], count: number): Question[] {

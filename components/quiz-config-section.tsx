@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { BookOpen, Brain, FileText, GraduationCap, Laptop, Scale } from "lucide-react"
 import type { Area, Category, Difficulty } from "@/lib/types"
+import { getQuestionsByCategory, getQuestionsByDifficulty } from "@/lib/questions"
 
 const categories: { value: Category | "todas"; label: string; description: string; icon: React.ReactNode }[] = [
   { value: "todas", label: "Todas as Categorias", description: "Questoes variadas de todos os temas", icon: <Brain className="h-5 w-5" /> },
@@ -28,6 +29,21 @@ export function QuizConfigSection() {
   const [category, setCategory] = useState<Category | "todas">("todas")
   const [difficulty, setDifficulty] = useState<Difficulty | "todas">("todas")
   const [quantity, setQuantity] = useState(10)
+
+  // Calculate available questions for the current filter selection
+  const availableCount = useMemo(() => {
+    const filtered = getQuestionsByCategory(category)
+    return getQuestionsByDifficulty(filtered, difficulty).length
+  }, [category, difficulty])
+
+  // Auto-adjust quantity if it exceeds available questions
+  useEffect(() => {
+    if (quantity > availableCount && availableCount > 0) {
+      // Pick the largest valid quantity option
+      const valid = quantities.filter(q => q <= availableCount)
+      setQuantity(valid.length > 0 ? valid[valid.length - 1] : availableCount)
+    }
+  }, [availableCount, quantity])
 
   function handleStart() {
     const params = new URLSearchParams({
@@ -145,21 +161,30 @@ export function QuizConfigSection() {
       <div className="mb-10">
         <label className="mb-3 block text-sm font-medium text-foreground">
           Quantidade de questoes
+          <span className="ml-2 text-xs font-normal text-muted-foreground">
+            ({availableCount} disponiveis)
+          </span>
         </label>
         <div className="flex flex-wrap gap-3">
-          {quantities.map((qty) => (
-            <button
-              key={qty}
-              onClick={() => setQuantity(qty)}
-              className={`rounded-lg border-2 px-5 py-2.5 text-sm font-medium transition-all ${
-                quantity === qty
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-card text-card-foreground hover:border-primary/50"
-              }`}
-            >
-              {qty} questoes
-            </button>
-          ))}
+          {quantities.map((qty) => {
+            const disabled = qty > availableCount
+            return (
+              <button
+                key={qty}
+                onClick={() => !disabled && setQuantity(qty)}
+                disabled={disabled}
+                className={`rounded-lg border-2 px-5 py-2.5 text-sm font-medium transition-all ${
+                  disabled
+                    ? "cursor-not-allowed border-border bg-secondary/50 text-muted-foreground opacity-50"
+                    : quantity === qty
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-card-foreground hover:border-primary/50"
+                }`}
+              >
+                {qty} questoes
+              </button>
+            )
+          })}
         </div>
       </div>
 

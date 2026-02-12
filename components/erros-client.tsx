@@ -15,7 +15,7 @@ import {
 import { QuestionCard } from "@/components/question-card"
 import { QuizResults } from "@/components/quiz-results"
 import type { Question } from "@/lib/types"
-import { questions as allQuestions } from "@/lib/questions"
+import { questions as allQuestions, shuffleAllOptions } from "@/lib/questions"
 import {
   getWrongQuestions,
   clearWrongQuestions,
@@ -48,8 +48,8 @@ export function ErrosClient() {
     setWrongEntries(entries)
     const wrongIds = new Set(entries.map((e) => e.questionId))
     const qs = allQuestions.filter((q) => wrongIds.has(q.id))
-    // Shuffle
-    const shuffled = [...qs].sort(() => Math.random() - 0.5)
+    // Shuffle questions and their options
+    const shuffled = shuffleAllOptions([...qs].sort(() => Math.random() - 0.5))
     setQuestions(shuffled)
   }
 
