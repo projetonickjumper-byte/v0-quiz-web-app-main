@@ -9,6 +9,7 @@ import type { Question } from "@/lib/types"
 import {
   getQuestionsByCategory,
   getQuestionsByDifficulty,
+  shuffleAllOptions,
 } from "@/lib/questions"
 import {
   getUnusedQuestions,
@@ -37,7 +38,7 @@ export function QuizClient({ category, difficulty, quantity }: QuizClientProps) 
   useEffect(() => {
     let filtered = getQuestionsByCategory(category)
     filtered = getQuestionsByDifficulty(filtered, difficulty)
-    const selected = getUnusedQuestions(filtered, quantity)
+    const selected = shuffleAllOptions(getUnusedQuestions(filtered, quantity))
     setQuestions(selected)
     setAnswers(new Array(selected.length).fill(null))
   }, [category, difficulty, quantity])
