@@ -23,7 +23,7 @@ import { reviewTopics } from "@/lib/questions"
 import type { Category } from "@/lib/types"
 
 interface ReviewClientProps {
-  category: Category | "todas"
+  category: Category | Category[] | "todas"
 }
 
 const categoryConfig: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
@@ -51,7 +51,8 @@ const categoryConfig: Record<string, { label: string; icon: React.ReactNode; col
 
 export function ReviewClient({ category }: ReviewClientProps) {
   const router = useRouter()
-  const [selectedCategory, setSelectedCategory] = useState<Category | "todas">(category)
+  const initialCategory = Array.isArray(category) ? category[0] : category
+  const [selectedCategory, setSelectedCategory] = useState<Category | "todas">(initialCategory)
   const [currentTopicIndex, setCurrentTopicIndex] = useState(0)
   const [expandedPoint, setExpandedPoint] = useState<number | null>(0)
   const [reviewed, setReviewed] = useState<Set<number>>(new Set())

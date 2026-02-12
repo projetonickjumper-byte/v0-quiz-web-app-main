@@ -13,7 +13,10 @@ export default async function QuizPage({
   searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
   const params = await searchParams
-  const category = (params.category || "todas") as Category | "todas"
+  const categoryParam = params.category || "todas"
+  const categories = categoryParam.includes(",")
+    ? categoryParam.split(",") as Category[]
+    : categoryParam as Category | "todas"
   const difficulty = (params.difficulty || "todas") as Difficulty | "todas"
   const quantity = parseInt(params.quantity || "10", 10)
 
@@ -24,7 +27,7 @@ export default async function QuizPage({
       </div>
     }>
       <QuizClient
-        category={category}
+        category={categories}
         difficulty={difficulty}
         quantity={quantity}
       />

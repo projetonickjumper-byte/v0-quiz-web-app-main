@@ -25,33 +25,45 @@ const quantities = [5, 10, 15, 20]
 export function QuizConfigSection() {
   const router = useRouter()
   const [area, setArea] = useState<Area | null>(null)
-  const [category, setCategory] = useState<Category | null>(null)
+  const [selectedCategories, setSelectedCategories] = useState<Set<Category>>(new Set())
   const [difficulty, setDifficulty] = useState<Difficulty | "todas">("todas")
   const [quantity, setQuantity] = useState(10)
 
+  function toggleCategory(cat: Category) {
+    setSelectedCategories((prev) => {
+      const next = new Set(prev)
+      if (next.has(cat)) {
+        next.delete(cat)
+      } else {
+        next.add(cat)
+      }
+      return next
+    })
+  }
+
   // Calculate available questions for the current filter selection
   const availableCount = useMemo(() => {
-    if (!category) return 0
-    const filtered = getQuestionsByCategory(category)
+    if (selectedCategories.size === 0) return 0
+    const cats = Array.from(selectedCategories)
+    const filtered = getQuestionsByCategory(cats)
     return getQuestionsByDifficulty(filtered, difficulty).length
-  }, [category, difficulty])
+  }, [selectedCategories, difficulty])
 
   // Auto-adjust quantity if it exceeds available questions
   useEffect(() => {
     if (quantity > availableCount && availableCount > 0) {
-      // Pick the largest valid quantity option
       const valid = quantities.filter(q => q <= availableCount)
       setQuantity(valid.length > 0 ? valid[valid.length - 1] : availableCount)
     }
   }, [availableCount, quantity])
 
-  const canStart = area !== null && category !== null && availableCount > 0
+  const canStart = area !== null && selectedCategories.size > 0 && availableCount > 0
 
   function handleStart() {
-    if (!area || !category) return
+    if (!area || selectedCategories.size === 0) return
     const params = new URLSearchParams({
       area,
-      category,
+      category: Array.from(selectedCategories).join(","),
       difficulty,
       quantity: quantity.toString(),
     })
@@ -59,10 +71,10 @@ export function QuizConfigSection() {
   }
 
   function handleReview() {
-    if (!area || !category) return
+    if (!area || selectedCategories.size === 0) return
     const params = new URLSearchParams({
       area,
-      category,
+      category: Array.from(selectedCategories).join(","),
     })
     router.push(`/review?${params.toString()}`)
   }
@@ -114,30 +126,47 @@ export function QuizConfigSection() {
         </div>
       </div>
 
-      {/* Category Selection */}
+      {/* Category Selection (multi-select) */}
       <div className="mb-8">
         <label className="mb-3 block text-sm font-medium text-foreground">
-          Categoria
-          {!category && <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma categoria</span>}
+          Categorias
+          {selectedCategories.size === 0
+            ? <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma ou mais categorias</span>
+            : <span className="ml-2 text-xs font-normal text-muted-foreground">({selectedCategories.size} selecionada{selectedCategories.size > 1 ? "s" : ""})</span>
+          }
         </label>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-2">
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setCategory(cat.value)}
-              className={`flex items-start gap-3 rounded-lg border-2 p-4 text-left transition-all ${
-                category === cat.value
-                  ? "border-primary bg-accent text-accent-foreground"
-                  : "border-border bg-card text-card-foreground hover:border-primary/50"
-              }`}
-            >
-              <div className="mt-0.5 shrink-0">{cat.icon}</div>
-              <div>
-                <p className="font-medium">{cat.label}</p>
-                <p className="text-xs text-muted-foreground">{cat.description}</p>
-              </div>
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isSelected = selectedCategories.has(cat.value)
+            return (
+              <button
+                key={cat.value}
+                onClick={() => toggleCategory(cat.value)}
+                className={`flex items-start gap-3 rounded-lg border-2 p-4 text-left transition-all ${
+                  isSelected
+                    ? "border-primary bg-accent text-accent-foreground"
+                    : "border-border bg-card text-card-foreground hover:border-primary/50"
+                }`}
+              >
+                <div className="mt-0.5 shrink-0">{cat.icon}</div>
+                <div className="flex-1">
+                  <p className="font-medium">{cat.label}</p>
+                  <p className="text-xs text-muted-foreground">{cat.description}</p>
+                </div>
+                <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 transition-colors ${
+                  isSelected
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card"
+                }`}>
+                  {isSelected && (
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+              </button>
+            )
+          })}
         </div>
       </div>
 

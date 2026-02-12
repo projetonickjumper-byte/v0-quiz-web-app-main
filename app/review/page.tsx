@@ -13,7 +13,10 @@ export default async function ReviewPage({
   searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
   const params = await searchParams
-  const category = (params.category || "todas") as Category | "todas"
+  const categoryParam = params.category || "todas"
+  const categories = categoryParam.includes(",")
+    ? categoryParam.split(",") as Category[]
+    : categoryParam as Category | "todas"
 
   return (
     <Suspense fallback={
@@ -21,7 +24,7 @@ export default async function ReviewPage({
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
       </div>
     }>
-      <ReviewClient category={category} />
+      <ReviewClient category={categories} />
     </Suspense>
   )
 }

@@ -2787,8 +2787,12 @@ export const reviewTopics: ReviewTopic[] = [
 // UTILITY FUNCTIONS
 // ============================================================
 
-export function getQuestionsByCategory(category: Category | "todas" | null): Question[] {
+export function getQuestionsByCategory(category: Category | Category[] | "todas" | null): Question[] {
   if (category === "todas" || category === null) return [...questions]
+  if (Array.isArray(category)) {
+    const set = new Set(category)
+    return questions.filter(q => set.has(q.category))
+  }
   return questions.filter(q => q.category === category)
 }
 
