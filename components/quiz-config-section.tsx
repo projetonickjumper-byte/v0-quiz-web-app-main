@@ -6,8 +6,7 @@ import { BookOpen, Brain, FileText, GraduationCap, Laptop, Scale } from "lucide-
 import type { Area, Category, Difficulty } from "@/lib/types"
 import { getQuestionsByCategory, getQuestionsByDifficulty } from "@/lib/questions"
 
-const categories: { value: Category | "todas"; label: string; description: string; icon: React.ReactNode }[] = [
-  { value: "todas", label: "Todas as Categorias", description: "Questoes variadas de todos os temas", icon: <Brain className="h-5 w-5" /> },
+const categories: { value: Category; label: string; description: string; icon: React.ReactNode }[] = [
   { value: "portugues", label: "Lingua Portuguesa", description: "Interpretacao de texto, gramatica, ortografia e semantica", icon: <FileText className="h-5 w-5" /> },
   { value: "legislacao", label: "Legislacao", description: "CF, Lei 8.112, LDB, Lei 11.892 e mais", icon: <Scale className="h-5 w-5" /> },
   { value: "informatica", label: "Informatica", description: "Algoritmos, POO, Banco de Dados, Redes e mais", icon: <Laptop className="h-5 w-5" /> },
@@ -25,13 +24,14 @@ const quantities = [5, 10, 15, 20]
 
 export function QuizConfigSection() {
   const router = useRouter()
-  const [area, setArea] = useState<Area>("informatica")
-  const [category, setCategory] = useState<Category | "todas">("todas")
+  const [area, setArea] = useState<Area | null>(null)
+  const [category, setCategory] = useState<Category | null>(null)
   const [difficulty, setDifficulty] = useState<Difficulty | "todas">("todas")
   const [quantity, setQuantity] = useState(10)
 
   // Calculate available questions for the current filter selection
   const availableCount = useMemo(() => {
+    if (!category) return 0
     const filtered = getQuestionsByCategory(category)
     return getQuestionsByDifficulty(filtered, difficulty).length
   }, [category, difficulty])
@@ -45,7 +45,10 @@ export function QuizConfigSection() {
     }
   }, [availableCount, quantity])
 
+  const canStart = area !== null && category !== null && availableCount > 0
+
   function handleStart() {
+    if (!area || !category) return
     const params = new URLSearchParams({
       area,
       category,
@@ -56,6 +59,7 @@ export function QuizConfigSection() {
   }
 
   function handleReview() {
+    if (!area || !category) return
     const params = new URLSearchParams({
       area,
       category,
@@ -76,6 +80,7 @@ export function QuizConfigSection() {
       <div className="mb-8">
         <label className="mb-3 block text-sm font-medium text-foreground">
           Area de atuacao
+          {!area && <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma area</span>}
         </label>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <button
@@ -113,8 +118,9 @@ export function QuizConfigSection() {
       <div className="mb-8">
         <label className="mb-3 block text-sm font-medium text-foreground">
           Categoria
+          {!category && <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma categoria</span>}
         </label>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-2">
           {categories.map((cat) => (
             <button
               key={cat.value}
@@ -192,14 +198,24 @@ export function QuizConfigSection() {
       <div className="flex flex-col gap-3 sm:flex-row">
         <button
           onClick={handleStart}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.98]"
+          disabled={!canStart}
+          className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-8 py-4 text-base font-semibold transition-transform ${
+            canStart
+              ? "bg-primary text-primary-foreground hover:scale-[1.02] active:scale-[0.98]"
+              : "cursor-not-allowed bg-primary/50 text-primary-foreground/70"
+          }`}
         >
           <Brain className="h-5 w-5" />
           Iniciar Quiz
         </button>
         <button
           onClick={handleReview}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-border bg-card px-8 py-4 text-base font-semibold text-card-foreground transition-all hover:border-primary/50"
+          disabled={!canStart}
+          className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg border-2 px-8 py-4 text-base font-semibold transition-all ${
+            canStart
+              ? "border-border bg-card text-card-foreground hover:border-primary/50"
+              : "cursor-not-allowed border-border/50 bg-card/50 text-muted-foreground"
+          }`}
         >
           <BookOpen className="h-5 w-5" />
           Revisar conteudo antes do Quiz
