@@ -52,18 +52,28 @@ export function resetUsedQuestions(): void {
 }
 
 export function getUnusedQuestions(pool: Question[], count: number): Question[] {
-  const usedIds = new Set(getUsedQuestionIds())
-  let unused = pool.filter((q) => !usedIds.has(q.id))
+  // Clamp count to pool size — never request more than what exists
+  const target = Math.min(count, pool.length)
 
-  // If not enough unused, reset and use all
-  if (unused.length < count) {
-    resetUsedQuestions()
-    unused = [...pool]
+  const usedIds = new Set(getUsedQuestionIds())
+  const unused = pool.filter((q) => !usedIds.has(q.id))
+
+  if (unused.length >= target) {
+    // Enough fresh questions
+    const shuffled = [...unused].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, target)
   }
 
-  // Shuffle and slice
-  const shuffled = [...unused].sort(() => Math.random() - 0.5)
-  return shuffled.slice(0, count)
+  // Not enough unused — take all unused, then fill remaining from used pool (recycled)
+  const used = pool.filter((q) => usedIds.has(q.id))
+  const shuffledUsed = [...used].sort(() => Math.random() - 0.5)
+  const recycled = shuffledUsed.slice(0, target - unused.length)
+
+  // Reset tracking so recycled questions are fresh next round
+  resetUsedQuestions()
+
+  const combined = [...unused, ...recycled].sort(() => Math.random() - 0.5)
+  return combined.slice(0, target)
 }
 
 // ============================================================
