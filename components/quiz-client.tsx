@@ -21,7 +21,7 @@ import type { WrongEntry, QuizResult } from "@/lib/storage"
 import type { Category, Difficulty } from "@/lib/types"
 
 interface QuizClientProps {
-  category: Category | "todas"
+  category: Category | Category[] | "todas"
   difficulty: Difficulty | "todas"
   quantity: number
 }

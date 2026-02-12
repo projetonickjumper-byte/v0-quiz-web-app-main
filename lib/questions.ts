@@ -1889,6 +1889,589 @@ export const questions: Question[] = [
     category: "informatica",
     difficulty: "medio"
   },
+
+  // ============================================================
+  // LINGUA PORTUGUESA - Questoes com Interpretacao de Texto
+  // (Baseadas na prova IFPI 2022 - Edital 73/2022)
+  // ============================================================
+  {
+    id: 201,
+    text: "Leia o texto abaixo e responda.\n\nASA BRANCA (Humberto Teixeira / Luiz Gonzaga)\n\nQuando oiei' a terra ardendo\nQual fogueira de Sao Joao\nEu preguntei' a Deus do ceu, uai\nPor que tamanha judiacao?\nQue braseiro, que fornaia'\nNenhum pe de prantacao'\nPor farta' d'agua perdi meu gado\nMorreu de sede meu alazao\nInte' mesmo a asa branca\nBateu asas do sertao\nEntonce' eu disse: adeus, Rosinha\nGuarda contigo meu coracao\nHoje longe, muitas legua\nNuma triste solidao\nEspero a chuva cair de novo\nPra mim vortar' pro meu sertao\nQuando o verde dos teus oio'\nSe espaiar' na prantacao'\nEu te asseguro, nao chore, nao, viu\nQue eu vortarei', viu, meu coracao\n\nPelo entendimento que se faz do texto, percebe-se que:",
+    options: [
+      "Ha uma critica ferrenha as queimadas e, principalmente, aos cacadores de asa branca, ave simbolo do sertao brasileiro.",
+      "Ha uma ironia em relacao ao modo de falar nordestino, mostrando o coloquialismo da lingua portuguesa em um patamar inferior.",
+      "A intencao dos autores e mostrar que, embora o falar nordestino seja bonito e perfeitamente compreensivel, deve-se utilizar a norma padrao da lingua portuguesa na elaboracao das musicas.",
+      "O eu lirico foi embora, fugindo das condicoes adversas provocadas pela seca, mas, assim que tudo melhorar, vai buscar a companheira Rosinha.",
+      "A volta do eu lirico para o sertao esta condicionada ao fator geografico."
+    ],
+    correctIndex: 3,
+    explanation: "O eu lirico deixou o sertao por causa da seca ('Por farta d'agua perdi meu gado') e promete voltar quando as condicoes melhorarem ('Espero a chuva cair de novo / Pra mim vortar pro meu sertao'). Ele se despede de Rosinha e promete buscala. Nao ha critica a queimadas, ironia sobre o falar nordestino, nem defesa da norma padrao.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 202,
+    text: "Leia o texto abaixo e responda.\n\nMONTE CASTELO (Renato Russo)\n\n1. Ainda que eu falasse a lingua dos homens\n2. E falasse a lingua dos anjos,\n3. Sem amor eu nada seria.\n4. E so o amor,\n5. E so o amor\n6. Que conhece o que e verdade.\n7. O amor e bom, nao quer o mal.\n8. Nao sente inveja ou se envaidece.\n9. O amor e fogo que arde sem se ver.\n10. E ferida que doi e nao se sente.\n11. E um contentamento descontente.\n12. E dor que desatina sem doer.\n16. E um nao querer mais que bem querer.\n17. E solitario andar por entre a gente.\n18. E um nao contentar-se de contente.\n19. E cuidar que se ganha em se perder.\n20. E um estar-se preso por vontade.\n21. E servir a quem vence o vencedor.\n22. E um ter com quem nos mata lealdade.\n23. Tao contrario a si e o mesmo amor.\n\nPode-se afirmar que a repeticao da palavra 'E', no inicio dos versos 16 a 22, caracteriza um recurso linguistico denominado:",
+    options: [
+      "Assonancia",
+      "Polissindeto",
+      "Onomatopeia",
+      "Aliteracao",
+      "Anafora"
+    ],
+    correctIndex: 4,
+    explanation: "Anafora e a repeticao de uma mesma palavra ou expressao no inicio de versos ou frases sucessivas. Nos versos 16 a 22, a palavra 'E' e repetida sistematicamente no inicio de cada verso, configurando claramente uma anafora. Assonancia e repeticao de vogais; aliteracao e repeticao de consoantes; polissindeto e repeticao de conjuncoes; onomatopeia e imitacao de sons.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 203,
+    text: "Leia o texto abaixo e responda.\n\nSALOME E O CARNAVAL\n\nSalome tem o nome e ja teve a gloria. Ha muitos anos vive, com outros biscateiros e ambulantes, num porao de casa velha na rua Ipiranga - o que resta dos escombros do passado do Rio de Janeiro, que continua marchando para o que os entendidos chamam de progresso. Seu canto, onde deita o corpo macerado por muitos tormentos, e um compartimento escuro, pequeno, mal cabendo uma cama de solteiro, um armario magro e sua mesinha de passar roupas.\n(BRASIL, Assis. Salome e o Carnaval. In Cacua, coletanea de contos piauienses. Teresina: Fundapi, 2020. p. 41)\n\nSobre os processos de flexao observados em palavras presentes no texto, podemos afirmar:",
+    options: [
+      "'Marchando' e uma flexao da palavra marcha.",
+      "'Biscateiros' apresenta somente flexao de genero.",
+      "'Mesinha' nao apresenta flexao de genero.",
+      "'Biscateiros' e 'ambulantes' apresentam tipos diferentes de flexao.",
+      "'Porao' apresenta flexao de grau."
+    ],
+    correctIndex: 2,
+    explanation: "'Mesinha' e um diminutivo de 'mesa' - apresenta flexao de GRAU (diminutivo), mas nao de genero, pois 'mesa' ja e feminino e 'mesinha' mantem o genero. 'Marchando' e uma forma verbal (gerundio), nao flexao da palavra 'marcha' (substantivo). 'Biscateiros' apresenta flexao de genero E numero. 'Biscateiros' e 'ambulantes' apresentam o mesmo tipo de flexao (numero). 'Porao' e um aumentativo de 'porta'? Nao - 'porao' nao e flexao de grau, e uma palavra primitiva.",
+    category: "portugues",
+    difficulty: "dificil"
+  },
+  {
+    id: 204,
+    text: "Leia o texto abaixo e responda.\n\nTODA ALEGRIA CANSADA MERECE UMA BENCAO\n\nA maioria das pessoas leva um pedaco de casa nas costas: tudo aquilo que e necessario e que inclui objetos diarios da vida pratica, que limpam, alimentam o corpo, descarregam males da alma, preservam a saude, pedacos de oracoes, minucias rasuradas da Biblia, escova de dente, comida-rapida: que as lembre do quao distante de casa estao e como sera impossivel voltar la a qualquer momento. E as suas inflexoes carregadas, dobradas, chiadas, esparsas e perversas, desafiam minha determinacao. As pessoas carregam uma segunda-feira irremediavel a tiracolo. Algumas se arrastam, poucas parecem querer parar. O amor tem pressa, mas nao chega a lugar algum.\n(Raimundo Neto. Cacua, coletanea de contos piauienses. Teresina: Fundapi, 2020. p. 183)\n\nApos a leitura e analise do texto, podemos AFIRMAR que:",
+    options: [
+      "O uso do sinal de dois pontos nao poderia ser substituido por virgulas ou travessoes, pois mudaria o sentido expresso no texto.",
+      "Os verbos 'limpam', 'alimentam', 'carregam' e 'arrastam' referem-se a 'objetos diarios da vida pratica', por isso se encontram no plural.",
+      "No trecho 'que as lembre', a concordancia do verbo esta relacionada ao termo 'um pedaco de casa nas costas'.",
+      "Na sequencia 'descarregam males da alma, preservam a saude, pedacos de oracoes, minucias rasuradas da Biblia', as palavras destacadas deveriam estar empregadas obrigatoriamente no singular.",
+      "O sujeito, implicito, de 'nao chega a lugar algum' e o proprio narrador."
+    ],
+    correctIndex: 0,
+    explanation: "Os dois pontos no texto introduzem uma enumeracao/explicacao. Se substituidos por virgulas ou travessoes, a funcao de introducao enumerativa se perderia, alterando a relacao sintatica e o sentido. Os verbos 'carregam' e 'arrastam' referem-se a 'pessoas' (nao a 'objetos'). O sujeito de 'nao chega' e 'O amor', nao o narrador.",
+    category: "portugues",
+    difficulty: "dificil"
+  },
+  {
+    id: 205,
+    text: "Leia o poema abaixo e responda.\n\ntodos os dias sao um deserto\nisto tambem e uma fome\noutra fome\no carcara persegue\nos dias, as imagens vindas\ndos dias, do alto\na sombra\ne algum naufragio depois do ceu\ne isto e imenso\n(Lima, Manoel Ricardo de. O Metodo da Exaustao. Rio de Janeiro: Garupa, 2020, p.32)\n\nSobre o poema em questao, podemos AFIRMAR que:",
+    options: [
+      "O termo 'isto' tem como referente o termo 'carcara', utilizado no poema em sentido denotativo.",
+      "A polissemia presente no texto e limitada a primeira estrofe, configurando-se no uso conotativo da palavra 'deserto'.",
+      "O principal elemento estilistico para a construcao do texto e a utilizacao de paronimos.",
+      "O carater polissemico do texto e tao metaforico que seus substantivos apresentam um sentido conotativo.",
+      "'Deserto' e 'imenso' apresentam, no texto, uma relacao semantica de antonimia."
+    ],
+    correctIndex: 3,
+    explanation: "O poema utiliza intensamente a linguagem figurada/conotativa. Palavras como 'deserto', 'fome', 'carcara', 'naufragio', 'sombra' sao empregadas em sentido metaforico/conotativo, conferindo ao texto um carater polissemico. Nao se limitam ao sentido literal, mas constroem camadas de significado. 'Deserto' e 'imenso' nao sao antonimos. O referente de 'isto' nao e 'carcara'. O poema nao se baseia em paronimos.",
+    category: "portugues",
+    difficulty: "dificil"
+  },
+  {
+    id: 206,
+    text: "Leia o texto abaixo e responda.\n\nSoneto 45 - Luis Vaz de Camoes\n\nMudam-se os tempos, mudam-se as vontades,\nMuda-se o ser, muda-se a confianca:\nTodo o mundo e composto de mudanca,\nTomando sempre novas qualidades.\nContinuamente vemos novidades,\nDiferentes em tudo da esperanca:\nDo mal ficam as magoas na lembranca,\nE do bem (se algum houve) as saudades.\nO tempo cobre o chao de verde manto,\nQue ja coberto foi de neve fria,\nE em mim converte em choro o doce canto.\nE afora este mudar-se cada dia,\nOutra mudanca faz de mor espanto,\nQue nao se muda ja como soia.\n\nNo Soneto 45, Camoes fez uso frequente do pronome obliquo atono 'se'. Considere o texto e julgue as proposicoes:\n\nI - O uso do pronome 'se' no ultimo verso e facultativo, podendo ocorrer proclise ou enclise.\nII - O uso do pronome 'se' no ultimo verso esta inadequado a norma padrao.\nIII - O uso do pronome 'se' no ultimo verso esta adequado, pois o 'nao' (palavra negativa) torna obrigatoria a enclise.\nIV - O uso do pronome 'se' no ultimo verso esta adequado, pois o 'nao' (palavra negativa) torna obrigatoria a proclise.\n\nAssinale a alternativa CORRETA:",
+    options: [
+      "Apenas II esta correta.",
+      "Apenas III esta correta.",
+      "Apenas IV esta correta.",
+      "Apenas I e III estao corretas.",
+      "Apenas I e IV estao corretas."
+    ],
+    correctIndex: 2,
+    explanation: "No ultimo verso 'Que nao se muda ja como soia', o adverbio de negacao 'nao' e um fator de proclise obrigatoria, ou seja, o pronome 'se' deve vir ANTES do verbo. Portanto, a proposicao IV esta correta. A proposicao I esta errada (nao e facultativo). A II esta errada (esta adequado). A III esta errada (nao torna obrigatoria a enclise, mas sim a proclise).",
+    category: "portugues",
+    difficulty: "dificil"
+  },
+  {
+    id: 207,
+    text: "Leia o texto abaixo e responda.\n\nPapo de Indio (CHACAL)\n\nVeio uns omi de saia preta\ncheiu de caixinha e po branco\nqui eles disseram qui chama acucri\nAi eles falaram e nos fechamu a cara\ndepois eles arrepitirum e nos fechamu o corpo\nAi eles insistirum e nos comemu eles\n\nExistem quatro tipos de variacoes linguisticas. A variacao diatopica e aquela que depende do local onde vivem os falantes, que os influenciam. O termo 'arrepitirum', expresso no quinto verso do poema, e exemplo de variacao diatopica. Tambem e exemplo de variacao diatopica:",
+    options: [
+      "A gente pode se ve hoje? Tipo, vamos da um role.",
+      "As mademoiselles eram bastante prendadas na cozinha. Atualmente, as mocas preferem outras habilidades.",
+      "O Chico num sabe proque oce ta aqui. Ele num disconfia de nadinha.",
+      "O meliante fugiu e nao deixou rastros, comandante.",
+      "O pronome Vossa merce deu origem a vossemece que, por sua vez, evoluiu para vosmece, do qual surgiu voce."
+    ],
+    correctIndex: 2,
+    explanation: "A variacao diatopica (ou regional) esta relacionada ao local geografico onde o falante vive. A alternativa C apresenta marcas tipicamente regionais: 'num' (nao), 'proque' (por que), 'oce' (voce), 'ta' (esta), 'nadinha' (nada) - sao variantes regionais do portugues. A alternativa A e variacao diastratica (faixa etaria/grupo social). A B e variacao diacronica (historica). A D e variacao diafasica (registro formal/tecnico). A E e variacao diacronica.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 208,
+    text: "Leia o texto abaixo e responda.\n\nA virgula empregada na oracao 'O futuro, e hoje que a gente protege' (campanha publicitaria da Dryko Impermeabilizantes) tem como funcao:",
+    options: [
+      "Isolar o adjunto adverbial deslocado.",
+      "Isolar o vocativo.",
+      "Indicar a elipse de um termo.",
+      "Separar um termo topicalizado, que se deseja realcar.",
+      "Separar uma oracao intercalada."
+    ],
+    correctIndex: 3,
+    explanation: "Na frase 'O futuro, e hoje que a gente protege', o termo 'O futuro' foi topicalizado (deslocado para o inicio da frase para dar enfase/destaque). A virgula apos 'O futuro' separa esse termo topicalizado do restante da oracao. Topicalizacao e um recurso sintatico para realcar um elemento da frase. Nao e adjunto adverbial, vocativo, elipse nem oracao intercalada.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 209,
+    text: "Leia o texto abaixo e responda.\n\nBacamarte espetara na pobre senhora um par de olhos agudos como punhais. Quando ela acabou, estendeu-lhe a mao polidamente, como se o fizesse a propria esposa do vice-rei, e convidou-a a ir falar ao primo. A misera acreditou; ele levou-a a Casa Verde e encerrou-a na galeria dos alucinados.\nA noticia desta aleivosia do ilustre Bacamarte lancou o terror a alma da populacao. Ninguem queria acabar de crer que, sem motivo, sem inimizade, o alienista trancasse na Casa Verde uma senhora perfeitamente ajuizada, que nao tinha outro crime senao o de interceder por um infeliz.\n(ASSIS, Machado de. Papeis avulsos. 2. ed. Sao Paulo: Martin Claret, 2013. p. 29)\n\nSem prejuizo de sentido do texto, o termo 'aleivosia' no inicio do 2o paragrafo pode ser substituido por:",
+    options: [
+      "Decorosidade",
+      "Deslealdade",
+      "Probidade",
+      "Franqueza",
+      "Hombridade"
+    ],
+    correctIndex: 1,
+    explanation: "'Aleivosia' significa traicao, perfídia, deslealdade - agir de ma-fe contra alguem. No contexto, refere-se ao ato traicoeiro de Bacamarte ao prender a senhora na Casa Verde sob falso pretexto. 'Decorosidade' significa decoro/honra. 'Probidade' significa honestidade. 'Franqueza' significa sinceridade. 'Hombridade' significa dignidade. Todas sao antonimos de aleivosia, exceto 'deslealdade'.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 210,
+    text: "Leia o texto abaixo e responda.\n\n'A educacao e a arma mais poderosa que voce pode usar para mudar o mundo.' (Nelson Mandela)\n\n'Ensinar nao e transferir conhecimento, mas criar as possibilidades para a sua propria producao ou a sua construcao.' (Paulo Freire)\n\nComparando as duas citacoes, e CORRETO afirmar que:",
+    options: [
+      "Ambos os autores utilizam linguagem denotativa para expressar suas ideias sobre educacao.",
+      "Mandela utiliza metafora ao comparar educacao a uma arma, enquanto Freire usa antitese ao opor 'transferir' a 'criar'.",
+      "Ambos os textos apresentam figuras de linguagem de metonimia como recurso principal.",
+      "Freire utiliza hiperbole ao exagerar o papel do professor, enquanto Mandela utiliza eufemismo.",
+      "Nenhum dos textos apresenta figuras de linguagem, pois sao textos argumentativos diretos."
+    ],
+    correctIndex: 1,
+    explanation: "Mandela utiliza metafora ao chamar a educacao de 'arma', estabelecendo comparacao implicita entre educacao e instrumento de luta/transformacao. Freire usa antitese ao opor conceitos contrarios: 'transferir conhecimento' (visao bancaria) versus 'criar possibilidades' (visao construtivista). Nao se trata de linguagem denotativa, metonimia, hiperbole nem eufemismo.",
+    category: "portugues",
+    difficulty: "medio"
+  },
+  {
+    id: 211,
+    text: "Leia o texto abaixo e responda.\n\n'Ninguem ignora tudo. Ninguem sabe tudo. Todos nos sabemos alguma coisa. Todos nos ignoramos alguma coisa. Por isso aprendemos sempre.' (Paulo Freire)\n\nAnalise as afirmativas sobre o texto:\n\nI - O paralelismo sintatico e o principal recurso de coesao utilizado no texto.\nII - A conjuncao 'Por isso' estabelece relacao de causa e consequencia.\nIII - O pronome indefinido 'Ninguem' funciona como sujeito nas duas primeiras oracoes.\nIV - O texto apresenta progressao tematica por meio de retomada e ampliacao.\n\nEstao CORRETAS:",
+    options: [
+      "Apenas I e II.",
+      "Apenas II e III.",
+      "Apenas I, II e III.",
+      "Apenas II, III e IV.",
+      "Todas as afirmativas."
+    ],
+    correctIndex: 4,
+    explanation: "Todas estao corretas: I - O texto utiliza paralelismo sintatico (estruturas simetricas: 'Ninguem ignora/Ninguem sabe/Todos sabemos/Todos ignoramos'). II - 'Por isso' e uma locucao conjuntiva conclusiva que expressa consequencia. III - 'Ninguem' e pronome indefinido com funcao de sujeito em ambas as oracoes. IV - O texto progride tematicamente partindo da ignorancia parcial, passando pelo saber parcial, ate chegar a conclusao sobre o aprendizado continuo.",
+    category: "portugues",
+    difficulty: "dificil"
+  },
+  {
+    id: 212,
+    text: "Leia o texto abaixo e responda.\n\n'A persistencia e o caminho do exito.' (Charles Chaplin)\n\nConsiderando a analise sintatica da frase, assinale a alternativa CORRETA:",
+    options: [
+      "O sujeito e 'A persistencia' e o predicado e nominal.",
+      "O sujeito e 'o caminho do exito' e o predicado e verbal.",
+      "Trata-se de uma oracao sem sujeito com predicado verbo-nominal.",
+      "O sujeito e indeterminado e 'A persistencia' e objeto direto.",
+      "'Do exito' e adjunto adverbial de lugar."
+    ],
+    correctIndex: 0,
+    explanation: "Na frase 'A persistencia e o caminho do exito', o sujeito simples e 'A persistencia', o verbo 'e' funciona como verbo de ligacao e 'o caminho do exito' e predicativo do sujeito. Portanto, o predicado e nominal (formado por verbo de ligacao + predicativo). 'Do exito' e complemento nominal de 'caminho', nao adjunto adverbial.",
+    category: "portugues",
+    difficulty: "facil"
+  },
+
+  // ============================================================
+  // INFORMATICA - Questoes baseadas na prova IFPI 2022
+  // ============================================================
+  {
+    id: 301,
+    text: "No contexto de redes de computadores, um protocolo define o formato e a ordem das mensagens trocadas entre duas entidades comunicantes, bem como as acoes realizadas na transmissao e/ou no recebimento de uma mensagem ou outro evento. Qual das opcoes abaixo NAO corresponde a um protocolo de comunicacao utilizado na arquitetura TCP/IP?",
+    options: [
+      "HTTP",
+      "IP",
+      "POP3",
+      "RSA",
+      "Ethernet"
+    ],
+    correctIndex: 3,
+    explanation: "RSA nao e um protocolo de comunicacao da arquitetura TCP/IP. RSA e um algoritmo de criptografia assimetrica (de chave publica), desenvolvido por Rivest, Shamir e Adleman. HTTP, IP, POP3 e Ethernet sao protocolos de comunicacao utilizados nas diferentes camadas da arquitetura TCP/IP.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 302,
+    text: "O que e um Sistema Gerenciador de Banco de Dados (SGBD)?",
+    options: [
+      "Um conjunto de servidores responsaveis pelo armazenamento dos dados de uma instituicao.",
+      "Um conjunto de tecnicas de extracao de informacoes de maneira autonoma em uma base de dados.",
+      "Um conjunto de programas que permite aos usuarios criar e manter um banco de dados.",
+      "Um sistema de informacoes responsavel exclusivamente pela seguranca dos dados.",
+      "Um sistema voltado para organizar os arquivos de usuarios no sistema operacional."
+    ],
+    correctIndex: 2,
+    explanation: "Um SGBD (Sistema Gerenciador de Banco de Dados) e um conjunto de programas que permite aos usuarios definir, construir, manipular e compartilhar um banco de dados. Ele oferece funcionalidades como definicao de estrutura, consulta, atualizacao, controle de acesso, integridade e recuperacao de dados.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 303,
+    text: "Uma das propriedades desejaveis das transacoes em bancos de dados e o 'Isolamento'. O que caracteriza essa propriedade?",
+    options: [
+      "Ou ela sera executada em sua totalidade ou nao sera de modo nenhum.",
+      "Sua execucao completa faz o banco de dados passar de um estado consistente para outro.",
+      "A execucao de uma transacao nao deve sofrer interferencia de quaisquer outras transacoes concorrentes.",
+      "As mudancas aplicadas ao banco de dados por uma transacao efetivada devem persistir no banco de dados.",
+      "As transacoes devem ser sigilosas, ou seja, isoladas de qualquer ambiente onde possam ser expostas a acesso nao autorizado."
+    ],
+    correctIndex: 2,
+    explanation: "O Isolamento (Isolation) e uma das propriedades ACID das transacoes. Garante que a execucao de uma transacao nao deve ser interferida por outras transacoes concorrentes. A alternativa A descreve Atomicidade; B descreve Consistencia; D descreve Durabilidade. A alternativa E esta incorreta, pois isolamento nao se refere a sigilo.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 304,
+    text: "Na camada de enlace, os dispositivos precisam utilizar um protocolo de acesso ao meio que determina as regras de utilizacao do meio de transmissao. Qual protocolo de acesso ao meio e utilizado para o WiFi (802.11)?",
+    options: [
+      "CSMA/CD",
+      "RTS",
+      "ARP",
+      "CSMA/CA",
+      "CDMA"
+    ],
+    correctIndex: 3,
+    explanation: "O WiFi (IEEE 802.11) utiliza o protocolo CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance). Diferente do CSMA/CD usado em Ethernet cabeada (que detecta colisoes), o CSMA/CA busca EVITAR colisoes, pois em redes sem fio a deteccao de colisoes e impraticavel. RTS (Request to Send) e parte do mecanismo do CSMA/CA, mas nao e o protocolo principal. ARP opera na camada de rede. CDMA e uma tecnica de multiplexacao.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 305,
+    text: "Alice e Bob utilizam criptografia de chaves assimetricas para se comunicarem. Suponha que Alice quer enviar uma mensagem que apenas Bob podera ter acesso. Alem disso, Bob precisa ter certeza que foi de fato Alice quem enviou esta mensagem. Neste caso, quais chaves deverao ser utilizadas por Alice para criptografar a mensagem?",
+    options: [
+      "A chave publica de Bob e a chave publica de Alice.",
+      "A chave privada de Bob e a chave publica de Alice.",
+      "A chave publica de Bob e a chave privada de Alice.",
+      "A chave privada de Bob e a chave privada de Alice.",
+      "A chave publica de Bob e a chave privada de Bob."
+    ],
+    correctIndex: 2,
+    explanation: "Para garantir confidencialidade (so Bob ler), Alice usa a chave PUBLICA de Bob para cifrar. Para garantir autenticidade (provar que foi Alice), Alice usa sua chave PRIVADA para assinar digitalmente. Portanto: chave publica de Bob (confidencialidade) + chave privada de Alice (autenticidade/assinatura digital).",
+    category: "informatica",
+    difficulty: "dificil"
+  },
+  {
+    id: 306,
+    text: "Na programacao orientada a objetos, existe um padrao de projeto que tem como definicao garantir que uma classe tenha somente uma instancia e fornecer um ponto global de acesso a referida classe. Qual padrao de projeto e esse?",
+    options: [
+      "Interface",
+      "Abstract",
+      "Facade",
+      "Singleton",
+      "Strategy"
+    ],
+    correctIndex: 3,
+    explanation: "O padrao Singleton garante que uma classe tenha apenas uma instancia e fornece um ponto global de acesso a ela. E muito utilizado para criar uma instancia unica de conexao ao banco de dados, configuracoes globais, etc. Facade simplifica interfaces complexas. Strategy encapsula algoritmos intercambiaveis. Interface e Abstract sao conceitos de OO, nao padroes de projeto.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 307,
+    text: "A programacao orientada a objetos e um dos paradigmas mais utilizados no desenvolvimento de aplicacoes. Indique a alternativa CORRETA que representa os principais pilares da programacao orientada a objetos:",
+    options: [
+      "Abstracao, Interface, Heranca e Polimorfismo.",
+      "Abstracao, Interface, Encapsulamento e Heranca.",
+      "Abstracao, Encapsulamento, Heranca e Polimorfismo.",
+      "Interface, Encapsulamento, Heranca e Polimorfismo.",
+      "Interface, Abstracao, Encapsulamento e Polimorfismo."
+    ],
+    correctIndex: 2,
+    explanation: "Os quatro pilares fundamentais da POO sao: Abstracao (representar entidades essenciais), Encapsulamento (ocultar detalhes internos), Heranca (reutilizar e estender classes) e Polimorfismo (multiplas formas de comportamento). Interface NAO e considerada um dos pilares, embora seja um recurso importante da POO.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 308,
+    text: "Em sistemas operacionais multiprogramaveis, os processos podem assumir tres estados mais importantes: execucao (running), pronto (ready) e espera (wait). Dentre as opcoes a seguir, assinale a unica mudanca de estado que NAO e implementada em sistemas operacionais:",
+    options: [
+      "ESPERA para PRONTO",
+      "EXECUCAO para PRONTO",
+      "EXECUCAO para ESPERA",
+      "ESPERA para EXECUCAO",
+      "PRONTO para EXECUCAO"
+    ],
+    correctIndex: 3,
+    explanation: "A transicao de ESPERA para EXECUCAO nao existe. Um processo em estado de espera (wait) sempre vai primeiro para PRONTO (ready) quando o evento que aguardava ocorre, e so entao o escalonador pode coloca-lo em EXECUCAO. As demais transicoes sao validas: ESPERA->PRONTO, EXECUCAO->PRONTO (preempcao), EXECUCAO->ESPERA (E/S), PRONTO->EXECUCAO (escalonamento).",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 309,
+    text: "No desenvolvimento de aplicacoes mobile para o sistema operacional Android, qual destes componentes e utilizado para solicitar uma tarefa de outra aplicacao?",
+    options: [
+      "Activity",
+      "Service",
+      "Fragment",
+      "Intent",
+      "Content Provider"
+    ],
+    correctIndex: 3,
+    explanation: "O Intent e o componente utilizado no Android para solicitar uma acao de outro componente do aplicativo ou de outra aplicacao. Ele funciona como um mensageiro que solicita uma acao de outro componente. Activity e uma tela de interface. Service executa operacoes em segundo plano. Fragment e uma parte reutilizavel da UI. Content Provider gerencia dados compartilhados.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 310,
+    text: "Um dos frameworks para desenvolvimento de aplicativos multiplataforma mais utilizados na atualidade e o Flutter, desenvolvido pela Google. No Flutter, a interface grafica do aplicativo e construida utilizando diversos componentes organizados em uma estrutura hierarquica. Como sao chamados estes componentes?",
+    options: [
+      "Component",
+      "Widget",
+      "Fragment",
+      "Activity",
+      "Module"
+    ],
+    correctIndex: 1,
+    explanation: "No Flutter, os componentes da interface grafica sao chamados de Widgets. Tudo no Flutter e um Widget - desde elementos simples como texto e botoes ate layouts complexos. Eles sao organizados em uma estrutura hierarquica chamada 'Widget Tree'. Component e termo generico. Fragment e Activity sao conceitos do Android nativo. Module e um conceito de organizacao de codigo.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 311,
+    text: "O Node.js utiliza o interpretador V8 da Google e permite a execucao de codigos JavaScript fora do navegador. Marque a alternativa que apresenta os 4 tipos de streams fundamentais do Node.js:",
+    options: [
+      "Writable, Readable, Duplex e Transform",
+      "Duplex, Half-duplex, Transform e Static",
+      "Duplex, Half-duplex, Static e Dynamic",
+      "Writable, Readable, Static e Dynamic",
+      "Static, Dynamic, Duplex e Transform"
+    ],
+    correctIndex: 0,
+    explanation: "Os quatro tipos fundamentais de streams no Node.js sao: Readable (leitura), Writable (escrita), Duplex (leitura e escrita simultaneas) e Transform (modificacao dos dados durante a transferencia). Static, Dynamic e Half-duplex nao sao tipos de streams do Node.js.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+  {
+    id: 312,
+    text: "Dentro da engenharia de software, utiliza-se a UML (Unified Modeling Language) para modelar o sistema. Assinale a alternativa CORRETA para definir UML:",
+    options: [
+      "Uma arquitetura de modelos OO.",
+      "Uma linguagem de programacao visual.",
+      "Uma linguagem de programacao OO.",
+      "Uma linguagem de modelagem visual.",
+      "Um processo de desenvolvimento OO."
+    ],
+    correctIndex: 3,
+    explanation: "A UML (Unified Modeling Language) e uma linguagem de modelagem visual utilizada para especificar, visualizar, construir e documentar artefatos de sistemas de software. Ela NAO e uma linguagem de programacao (nao gera codigo executavel diretamente) nem um processo de desenvolvimento. E uma linguagem padrao para MODELAGEM.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 313,
+    text: "Considere a afirmacao: 'Trata-se de uma estrutura de dados em que os elementos sao inseridos por uma extremidade e removidos por outra. Sua remocao e sempre do elemento mais antigo (first in, first out).' Esta afirmacao se relaciona a qual estrutura de dados?",
+    options: [
+      "Arvore binaria",
+      "Pilha",
+      "Fila",
+      "Arvore",
+      "Lista encadeada"
+    ],
+    correctIndex: 2,
+    explanation: "A descricao corresponde a uma Fila (Queue), que segue o principio FIFO (First In, First Out) - o primeiro elemento inserido e o primeiro a ser removido. A Pilha (Stack) segue LIFO (Last In, First Out). Arvores sao estruturas hierarquicas. Lista encadeada permite insercao/remocao em qualquer posicao.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 314,
+    text: "O fluxograma e uma boa opcao para representar de maneira grafica o comportamento de um algoritmo/programa. O que o losango representa em um fluxograma?",
+    options: [
+      "O inicio do fluxograma",
+      "O fim do fluxograma",
+      "Entrada de dados",
+      "Tomada de decisao",
+      "Saida de dados"
+    ],
+    correctIndex: 3,
+    explanation: "No fluxograma, o losango (ou diamante) representa uma tomada de decisao - um ponto onde o fluxo se divide em dois ou mais caminhos com base em uma condicao (verdadeiro/falso, sim/nao). O retangulo arredondado representa inicio/fim. O paralelogramo representa entrada/saida de dados. O retangulo representa processamento.",
+    category: "informatica",
+    difficulty: "facil"
+  },
+  {
+    id: 315,
+    text: "Assinale a alternativa que contem apenas algoritmos de criptografia simetrica:",
+    options: [
+      "Blowfish, Twofish e 3DES",
+      "DES, RC2 e Diffie-Hellman",
+      "RC2, RSA, DAS e IDEA",
+      "DES, IDEA, RSA e AES",
+      "CAST, MD5 e AES"
+    ],
+    correctIndex: 0,
+    explanation: "Blowfish, Twofish e 3DES sao todos algoritmos de criptografia simetrica (usam a mesma chave para cifrar e decifrar). Diffie-Hellman e um protocolo de troca de chaves (assimetrico). RSA e criptografia assimetrica. DAS/DSA e algoritmo de assinatura digital. MD5 e funcao hash, nao algoritmo de criptografia.",
+    category: "informatica",
+    difficulty: "dificil"
+  },
+  {
+    id: 316,
+    text: "Solucao cross-platform que utiliza o C# como linguagem oficial para construcao de aplicativos para iOS, Android e Windows e:",
+    options: [
+      "Cordova",
+      "PhoneGap",
+      "Xamarin",
+      "Flutter",
+      "Corona SDK"
+    ],
+    correctIndex: 2,
+    explanation: "Xamarin (agora parte do .NET MAUI) e a plataforma cross-platform que utiliza C# como linguagem oficial para desenvolver aplicativos nativos para iOS, Android e Windows. Cordova e PhoneGap usam HTML/CSS/JS. Flutter usa Dart. Corona SDK usa Lua.",
+    category: "informatica",
+    difficulty: "medio"
+  },
+
+  // ============================================================
+  // PEDAGOGIA - Questoes baseadas na prova IFPI 2022
+  // ============================================================
+  {
+    id: 401,
+    text: "Leia a assertiva e, fundamentando-se na Psicologia da Educacao, marque a alternativa CORRETA.\n\n'A educacao escolar e qualitativamente diferente da educacao no sentido amplo. Na escola, a crianca se depara com uma tarefa particular: aprende as bases dos estudos cientificos.' (LEONTIEV; LURIA, 1968 apud VIGOTSKI, 2007, p. 163).",
+    options: [
+      "A aprendizagem efetiva inicia-se na idade escolar; os conhecimentos da crianca principiam na sala de aula.",
+      "A tarefa de ensinar, em nossa sociedade, esta concentrada nas maos dos professores e da escola.",
+      "A crianca desenvolve hipoteses e constroi conhecimentos sobre o mundo que precisam ser corrigidos pelas materias escolares.",
+      "No ambiente escolar, ha uma intencao previa de organizar situacoes que propiciem o aprimoramento dos processos de pensamento e da capacidade de aprender na crianca.",
+      "Os conhecimentos psicologicos sobre o desenvolvimento e a aprendizagem fundamentam as atividades escolares, por meio de uma educacao empirica e assistematica."
+    ],
+    correctIndex: 3,
+    explanation: "Segundo Vigotski, a educacao escolar e qualitativamente diferente porque ha intencionalidade pedagogica: o ambiente escolar organiza situacoes planejadas para desenvolver os processos psicologicos superiores. A aprendizagem NAO comeca apenas na escola (A errada). Ensinar nao se limita a professores (B errada). O papel da escola nao e 'corrigir' conhecimentos previos (C errada). A educacao escolar e SISTEMATICA, nao assistematica (E errada).",
+    category: "pedagogia",
+    difficulty: "medio"
+  },
+  {
+    id: 402,
+    text: "O debate sobre gestao da sala de aula ganhou maior projecao atraves dos teoricos dos saberes docentes, especialmente Gauthier et al. (2006), Tardif (2011) e Perrenoud (1999). Acerca dos debates sobre a gestao da sala de aula, marque a alternativa CORRETA:",
+    options: [
+      "O surgimento da investigacao cientifica da disciplina na escola se da no seculo XVIII e tem, nas pesquisas encaminhadas por Jacob Kounin, um divisor de aguas.",
+      "Para Kounin, quando um professor corrige o comportamento de um aluno em sala de aula, isso facilita a gestao da sala e serve de exemplo para os demais alunos.",
+      "As criticas contemporaneas ao modelo kouniano de gestao de sala de aula passam pela constatacao de que se trata de um modelo centrado no aluno.",
+      "O modelo de gestao de sala de aula de Kounin aponta que o sucesso dos professores, na gestao de classe, estava mais ligado a qualidade do planejamento, da organizacao e da execucao de aulas.",
+      "A ideia de gestao de sala de aula surge como uma especie de tentativa de neutralizar as relacoes afetivas e o desenvolvimento moral do aluno e de priorizar a instrucao propriamente dita."
+    ],
+    correctIndex: 3,
+    explanation: "Kounin demonstrou que o sucesso na gestao de classe estava mais ligado a qualidade do planejamento, organizacao e execucao das aulas do que a forma como o professor lidava com comportamentos inadequados. A alternativa A esta errada (foi no seculo XX, nao XVIII). B esta errada (Kounin mostrou que corrigir publicamente nao e eficaz). C esta errada (e centrado no professor, nao no aluno). E esta errada (nao se trata de neutralizar relacoes afetivas).",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
+  {
+    id: 403,
+    text: "A gestao escolar constitui uma dimensao e um enfoque de atuacao que objetivam promover a organizacao, a mobilizacao e a articulacao de todas as condicoes materiais e humanas necessarias para garantir o avanco dos processos socioeducacionais (LUCK, 2000). Julgue as assertivas:\n\n(I) Cabem a gestao escolar o direcionamento e a mobilizacao da cultura da instituicao.\n(II) Ganham importancia os estudos sobre a gestao da escola para subsidiar a implementacao de modelos de gestao eficazes e gerais.\n(III) A gestao da educacao precisa superar as praticas arraigadas pelo enfoque limitado da administracao, fazendo-se necessaria a centralizacao administrativa e financeira.\n(IV) O objetivo da gestao nada mais e do que a promocao de aprendizagens efetivas e significativas aos sujeitos escolares.\n\nAssinale a alternativa CORRETA:",
+    options: [
+      "Todas sao verdadeiras.",
+      "Todas sao falsas.",
+      "Ha 1 verdadeira e 3 falsas.",
+      "Ha 1 falsa e 3 verdadeiras.",
+      "Ha 2 verdadeiras e 2 falsas."
+    ],
+    correctIndex: 4,
+    explanation: "As assertivas I e IV sao verdadeiras. A assertiva II esta errada porque os modelos de gestao devem ser CONTEXTUALIZADOS, nao 'gerais'. A assertiva III esta errada porque a gestao democratica preza pela DESCENTRALIZACAO, nao centralizacao. Portanto, sao 2 verdadeiras (I e IV) e 2 falsas (II e III).",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
+  {
+    id: 404,
+    text: "Para Valle e Connor (2014), quando compreendemos as deficiencias como uma variacao humana natural, ela se torna apenas mais um fio na tapecaria da diversidade. Sobre essa diversidade humana, avalie:\n\nI - Para criar uma comunidade inclusiva, devemos afirmar a diversidade humana nos curriculos escolares.\nII - Para compreender a deficiencia como aspecto natural da diversidade humana, as criancas precisam ver a deficiencia da mesma forma que a raca, a classe e o genero sao representados.\nIII - Da mesma forma como incluimos as contribuicoes das mulheres e dos afrodescendentes nos curriculos escolares, tambem temos de incluir as contribuicoes feitas pelas pessoas com deficiencia.\n\nE CORRETO o que se afirma na assertiva:",
+    options: [
+      "I e III, apenas.",
+      "I e II, apenas.",
+      "II, apenas.",
+      "I, II e III.",
+      "I, apenas."
+    ],
+    correctIndex: 3,
+    explanation: "Todas as tres assertivas estao corretas segundo Valle e Connor (2014). A inclusao exige: afirmar a diversidade nos curriculos (I), tratar a deficiencia como parte natural da diversidade humana assim como raca, classe e genero (II), e incluir as contribuicoes das pessoas com deficiencia nos curriculos da mesma forma que incluimos outros grupos (III).",
+    category: "pedagogia",
+    difficulty: "medio"
+  },
+  {
+    id: 405,
+    text: "O multiculturalismo e compreendido como corpo teorico, historico e campo politico. Neste contexto, o curriculo multicultural surge como uma critica ao curriculo que se mostra:",
+    options: [
+      "Unilateral, competitivo, questionavel e revogavel.",
+      "Universal, unilateral, negociavel e irrevogavel.",
+      "Questionavel, unilateral, universal e revogavel.",
+      "Inquestionavel, universal, competitivo e unilateral.",
+      "Competitivo, inquestionavel, negociavel e universal."
+    ],
+    correctIndex: 3,
+    explanation: "O curriculo multicultural surge como critica ao curriculo tradicional que se apresenta como INQUESTIONAVEL (verdade absoluta), UNIVERSAL (valido para todos sem considerar diversidade), COMPETITIVO (baseado em meritocracia que ignora desigualdades) e UNILATERAL (perspectiva unica, geralmente eurocentrica). O curriculo multicultural contrapoe essas caracteristicas propondo pluralidade, contextualidade e negociacao.",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
+  {
+    id: 406,
+    text: "Considerando o processo de inclusao educacional, analise as afirmativas:\n\n(I) Inclusao trata-se de uma concepcao de insercao parcial, porque o sistema preve servicos educacionais segregados.\n(II) O processo de inclusao ocorre dentro de uma estrutura educacional que oferece ao aluno a oportunidade de transitar no sistema escolar da classe regular ao ensino especial.\n(III) Na inclusao, as escolas propoem um modo de organizacao do sistema educacional que considera as necessidades de todos os alunos e e estruturado em funcao delas.\n(IV) A inclusao implica uma mudanca de perspectiva educacional, pois nao se limita aos alunos com deficiencia, mas a todos os demais.\n\nAssinale a sequencia CORRETA:",
+    options: [
+      "V V V V",
+      "F V F V",
+      "F F F F",
+      "F F V V",
+      "V V F V"
+    ],
+    correctIndex: 3,
+    explanation: "I e FALSA: a inclusao NAO e insercao parcial nem preve segregacao - isso descreve a INTEGRACAO. II e FALSA: a inclusao nao preve transito entre classe regular e ensino especial - novamente, isso e integracao. III e VERDADEIRA: a inclusao estrutura o sistema em funcao das necessidades de TODOS os alunos. IV e VERDADEIRA: a inclusao abrange todos os alunos, nao apenas os com deficiencia.",
+    category: "pedagogia",
+    difficulty: "medio"
+  },
+  {
+    id: 407,
+    text: "De acordo com a Politica Nacional de Educacao Especial numa perspectiva Inclusiva, e INCORRETO afirmar:",
+    options: [
+      "Na educacao superior, a transversalidade da educacao especial se efetiva por meio de acoes que promovam o acesso, a permanencia e a participacao dos alunos.",
+      "Em todas as etapas e modalidades da educacao basica, o atendimento educacional especializado e organizado para apoiar o desenvolvimento dos alunos, constituindo oferta obrigatoria dos sistemas de ensino.",
+      "Na modalidade de educacao de jovens e adultos e educacao profissional, as acoes da educacao especial possibilitam a ampliacao de oportunidades de escolarizacao.",
+      "O atendimento educacional especializado disponibiliza programas de enriquecimento curricular. Ao longo de todo o processo de escolarizacao, esse atendimento deve estar articulado com a proposta pedagogica do ensino especial.",
+      "A educacao especial e uma modalidade de ensino que perpassa todos os niveis, etapas e modalidades, realiza o atendimento educacional especializado."
+    ],
+    correctIndex: 3,
+    explanation: "A alternativa D esta INCORRETA porque o atendimento educacional especializado deve estar articulado com a proposta pedagogica do ENSINO COMUM (regular), e nao do 'ensino especial'. A educacao especial na perspectiva inclusiva preza pela articulacao com a escola regular, e nao pela segregacao em ensino especial.",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
+  {
+    id: 408,
+    text: "Lee Shulman (2014) constroi seus fundamentos para a reforma do ensino numa ideia que enfatiza compreensao e raciocinio, transformacao e reflexao. No ciclo de atividades proposto por Shulman (compreensao, transformacao, instrucao, avaliacao e reflexao), a REFLEXAO e o processo em que o professor:",
+    options: [
+      "Organiza e gerencia a sala de aula, apresenta explicacoes claras e interage eficazmente com os alunos.",
+      "Requer combinacao de preparacao dos materiais de texto, representacao das ideias em novas analogias e selecoes instrucionais.",
+      "Olha para o ensino e o aprendizado que acabaram de ocorrer, reconstroi e recaptura os eventos, as emocoes e as realizacoes, aprendendo com a experiencia.",
+      "Entende o que um aluno compreende e requer dominio profundo do material a ser ensinado.",
+      "Documenta, analisa e discute os resultados da avaliacao sem considerar a experiencia pratica."
+    ],
+    correctIndex: 2,
+    explanation: "Segundo Shulman, a reflexao e o momento em que o professor olha para o ensino e a aprendizagem que ocorreram, reconstroi e recaptura os eventos, emocoes e realizacoes, aprendendo com a experiencia. A alternativa A descreve instrucao. B descreve transformacao. D descreve avaliacao. E esta incorreta pois a reflexao envolve a experiencia pratica.",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
+  {
+    id: 409,
+    text: "De acordo com as Diretrizes para educacao superior brasileira (Resolucao n. 7 de 2018), sao consideradas atividades de extensao as intervencoes que envolvam diretamente as comunidades externas. Sobre as modalidades de atividades extensionistas, marque V (verdadeira) ou F (falsa):\n\n(I) Programas e eventos.\n(II) Prestacao de servico e aulas de campo.\n(III) Cursos e oficinas.\n(IV) Projeto e prestacao de servico.\n\nAssinale a sequencia CORRETA:",
+    options: [
+      "V, V, V, V",
+      "V, F, V, V",
+      "V, F, F, V",
+      "V, V, V, F",
+      "V, V, F, F"
+    ],
+    correctIndex: 1,
+    explanation: "Segundo a Resolucao n. 7/2018, as modalidades de atividades extensionistas sao: programas, projetos, cursos e oficinas, eventos e prestacao de servicos. A assertiva II esta FALSA porque 'aulas de campo' NAO sao listadas como modalidade de extensao na resolucao. As demais (I, III e IV) estao corretas.",
+    category: "pedagogia",
+    difficulty: "medio"
+  },
+  {
+    id: 410,
+    text: "A avaliacao da aprendizagem e uma categoria pedagogica e didatica do processo de ensino e aprendizagem. Fazenda, Pereira, Soares e Kieckhoefel (2010) sugerem que a interdisciplinaridade esteja no bojo do debate sobre avaliacao. Sobre avaliar interdisciplinarmente, considere:\n\nI: Trata-se de uma perspectiva fenomenologica com olhar voltado para a subjetividade dos sujeitos, para o dialogo com o outro, para uma atitude interdisciplinar que alcance uma dimensao humana para o saber-ser.\nII: Pressupoe basicamente uma intersubjetividade, que pretende a construcao de uma superciencia.\nIII: Pressupoe uma aproximacao maior entre professor e aluno, com reciprocidade do olhar sobre o processo de ensino e aprendizagem.\nIV: Esse olhar transgride regras e disciplinas, possibilitando andar pelos diversos caminhos da avaliacao para reafirmar a importancia da parceria.\n\nAssinale a alternativa CORRETA:",
+    options: [
+      "Todas as afirmativas estao corretas.",
+      "Estao corretas as afirmativas I, II e III.",
+      "As afirmativas I, III e IV estao corretas.",
+      "Apenas a afirmativa I esta correta.",
+      "Apenas as afirmativas I e IV estao corretas."
+    ],
+    correctIndex: 2,
+    explanation: "As afirmativas I, III e IV estao corretas conforme Fazenda et al. A afirmativa II esta INCORRETA porque a avaliacao interdisciplinar NAO pretende a 'construcao de uma superciencia'. A interdisciplinaridade nao visa criar uma ciencia unica e totalizante, mas sim promover o dialogo entre diferentes areas mantendo suas especificidades.",
+    category: "pedagogia",
+    difficulty: "dificil"
+  },
 ]
 
 // ============================================================
@@ -2204,8 +2787,12 @@ export const reviewTopics: ReviewTopic[] = [
 // UTILITY FUNCTIONS
 // ============================================================
 
-export function getQuestionsByCategory(category: Category | "todas"): Question[] {
-  if (category === "todas") return [...questions]
+export function getQuestionsByCategory(category: Category | Category[] | "todas" | null): Question[] {
+  if (category === "todas" || category === null) return [...questions]
+  if (Array.isArray(category)) {
+    const set = new Set(category)
+    return questions.filter(q => set.has(q.category))
+  }
   return questions.filter(q => q.category === category)
 }
 

@@ -6,8 +6,7 @@ import { BookOpen, Brain, FileText, GraduationCap, Laptop, Scale } from "lucide-
 import type { Area, Category, Difficulty } from "@/lib/types"
 import { getQuestionsByCategory, getQuestionsByDifficulty } from "@/lib/questions"
 
-const categories: { value: Category | "todas"; label: string; description: string; icon: React.ReactNode }[] = [
-  { value: "todas", label: "Todas as Categorias", description: "Questoes variadas de todos os temas", icon: <Brain className="h-5 w-5" /> },
+const categories: { value: Category; label: string; description: string; icon: React.ReactNode }[] = [
   { value: "portugues", label: "Lingua Portuguesa", description: "Interpretacao de texto, gramatica, ortografia e semantica", icon: <FileText className="h-5 w-5" /> },
   { value: "legislacao", label: "Legislacao", description: "CF, Lei 8.112, LDB, Lei 11.892 e mais", icon: <Scale className="h-5 w-5" /> },
   { value: "informatica", label: "Informatica", description: "Algoritmos, POO, Banco de Dados, Redes e mais", icon: <Laptop className="h-5 w-5" /> },
@@ -25,30 +24,46 @@ const quantities = [5, 10, 15, 20]
 
 export function QuizConfigSection() {
   const router = useRouter()
-  const [area, setArea] = useState<Area>("informatica")
-  const [category, setCategory] = useState<Category | "todas">("todas")
+  const [area, setArea] = useState<Area | null>(null)
+  const [selectedCategories, setSelectedCategories] = useState<Set<Category>>(new Set())
   const [difficulty, setDifficulty] = useState<Difficulty | "todas">("todas")
   const [quantity, setQuantity] = useState(10)
 
+  function toggleCategory(cat: Category) {
+    setSelectedCategories((prev) => {
+      const next = new Set(prev)
+      if (next.has(cat)) {
+        next.delete(cat)
+      } else {
+        next.add(cat)
+      }
+      return next
+    })
+  }
+
   // Calculate available questions for the current filter selection
   const availableCount = useMemo(() => {
-    const filtered = getQuestionsByCategory(category)
+    if (selectedCategories.size === 0) return 0
+    const cats = Array.from(selectedCategories)
+    const filtered = getQuestionsByCategory(cats)
     return getQuestionsByDifficulty(filtered, difficulty).length
-  }, [category, difficulty])
+  }, [selectedCategories, difficulty])
 
   // Auto-adjust quantity if it exceeds available questions
   useEffect(() => {
     if (quantity > availableCount && availableCount > 0) {
-      // Pick the largest valid quantity option
       const valid = quantities.filter(q => q <= availableCount)
       setQuantity(valid.length > 0 ? valid[valid.length - 1] : availableCount)
     }
   }, [availableCount, quantity])
 
+  const canStart = area !== null && selectedCategories.size > 0 && availableCount > 0
+
   function handleStart() {
+    if (!area || selectedCategories.size === 0) return
     const params = new URLSearchParams({
       area,
-      category,
+      category: Array.from(selectedCategories).join(","),
       difficulty,
       quantity: quantity.toString(),
     })
@@ -56,9 +71,10 @@ export function QuizConfigSection() {
   }
 
   function handleReview() {
+    if (!area || selectedCategories.size === 0) return
     const params = new URLSearchParams({
       area,
-      category,
+      category: Array.from(selectedCategories).join(","),
     })
     router.push(`/review?${params.toString()}`)
   }
@@ -76,6 +92,7 @@ export function QuizConfigSection() {
       <div className="mb-8">
         <label className="mb-3 block text-sm font-medium text-foreground">
           Area de atuacao
+          {!area && <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma area</span>}
         </label>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <button
@@ -109,29 +126,47 @@ export function QuizConfigSection() {
         </div>
       </div>
 
-      {/* Category Selection */}
+      {/* Category Selection (multi-select) */}
       <div className="mb-8">
         <label className="mb-3 block text-sm font-medium text-foreground">
-          Categoria
+          Categorias
+          {selectedCategories.size === 0
+            ? <span className="ml-2 text-xs font-normal text-amber-600">Selecione uma ou mais categorias</span>
+            : <span className="ml-2 text-xs font-normal text-muted-foreground">({selectedCategories.size} selecionada{selectedCategories.size > 1 ? "s" : ""})</span>
+          }
         </label>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setCategory(cat.value)}
-              className={`flex items-start gap-3 rounded-lg border-2 p-4 text-left transition-all ${
-                category === cat.value
-                  ? "border-primary bg-accent text-accent-foreground"
-                  : "border-border bg-card text-card-foreground hover:border-primary/50"
-              }`}
-            >
-              <div className="mt-0.5 shrink-0">{cat.icon}</div>
-              <div>
-                <p className="font-medium">{cat.label}</p>
-                <p className="text-xs text-muted-foreground">{cat.description}</p>
-              </div>
-            </button>
-          ))}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-2">
+          {categories.map((cat) => {
+            const isSelected = selectedCategories.has(cat.value)
+            return (
+              <button
+                key={cat.value}
+                onClick={() => toggleCategory(cat.value)}
+                className={`flex items-start gap-3 rounded-lg border-2 p-4 text-left transition-all ${
+                  isSelected
+                    ? "border-primary bg-accent text-accent-foreground"
+                    : "border-border bg-card text-card-foreground hover:border-primary/50"
+                }`}
+              >
+                <div className="mt-0.5 shrink-0">{cat.icon}</div>
+                <div className="flex-1">
+                  <p className="font-medium">{cat.label}</p>
+                  <p className="text-xs text-muted-foreground">{cat.description}</p>
+                </div>
+                <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 transition-colors ${
+                  isSelected
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card"
+                }`}>
+                  {isSelected && (
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+              </button>
+            )
+          })}
         </div>
       </div>
 
@@ -192,14 +227,24 @@ export function QuizConfigSection() {
       <div className="flex flex-col gap-3 sm:flex-row">
         <button
           onClick={handleStart}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.98]"
+          disabled={!canStart}
+          className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-8 py-4 text-base font-semibold transition-transform ${
+            canStart
+              ? "bg-primary text-primary-foreground hover:scale-[1.02] active:scale-[0.98]"
+              : "cursor-not-allowed bg-primary/50 text-primary-foreground/70"
+          }`}
         >
           <Brain className="h-5 w-5" />
           Iniciar Quiz
         </button>
         <button
           onClick={handleReview}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-border bg-card px-8 py-4 text-base font-semibold text-card-foreground transition-all hover:border-primary/50"
+          disabled={!canStart}
+          className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg border-2 px-8 py-4 text-base font-semibold transition-all ${
+            canStart
+              ? "border-border bg-card text-card-foreground hover:border-primary/50"
+              : "cursor-not-allowed border-border/50 bg-card/50 text-muted-foreground"
+          }`}
         >
           <BookOpen className="h-5 w-5" />
           Revisar conteudo antes do Quiz
